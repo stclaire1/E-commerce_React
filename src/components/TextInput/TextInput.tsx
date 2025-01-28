@@ -1,7 +1,7 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
 
-function TextInput(props: { placeholder: string }) {
+function TextInput() {
     return (
         <div>
             <FeatherIcon icon="search" />
