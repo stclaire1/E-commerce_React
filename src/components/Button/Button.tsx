@@ -6,10 +6,10 @@ interface ButtonProps {
     btnText: string;
 }
 
-function Button(props: ButtonProps) {
+function Button({ type, btnText }: ButtonProps) {
     return (
-        <button type={props.type} className="button">
-            {props.btnText}
+        <button type={type} className="button">
+            {btnText}
         </button>
     );
 }

@@ -19,8 +19,7 @@ function HomePageHeader() {
             console.error('Erro ao fazer logout:', error);
         }
     };
-
-
+    
     return(
         <div className="homeHeaderContainer">
             <nav>

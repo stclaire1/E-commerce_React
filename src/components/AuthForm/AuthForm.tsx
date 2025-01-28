@@ -9,7 +9,7 @@ interface AuthLoginProps {
     isLogin: boolean;
 }
 
-function AuthForm(props: AuthLoginProps) {
+function AuthForm({ isLogin }: AuthLoginProps) {
 
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
@@ -27,7 +27,7 @@ function AuthForm(props: AuthLoginProps) {
         }
     
         try {
-          if (props.isLogin) {
+          if (isLogin) {
             // faz o login
             const user = await signIn(email, password);
             console.log("Usuário autenticado:", user);
@@ -54,7 +54,7 @@ function AuthForm(props: AuthLoginProps) {
                 <input type="password" placeholder="Password" ref={passwordRef} className="input"/>
             </div>
             <Link to="#" className="customLink">Forgot Password</Link>
-            <Button type="submit" btnText={props.isLogin ? "Sign in" : "Sign Up"}/>
+            <Button type="submit" btnText={isLogin ? "Sign in" : "Sign Up"}/>
         </form>
     );
 }

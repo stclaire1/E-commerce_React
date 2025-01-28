@@ -1,8 +1,84 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchData, DataType, Review } from '../../services/api/apiService';
+import { Link, useParams } from 'react-router-dom';
+import CommomPageHeader from '../../components/CommomPageHeader/CommomPageHeader';
+import './ProductDetail.css';
+import ProductOverview from '../../components/ProductOverView/ProductOverview';
+import ProductSpecification from '../../components/ProductSpecification/ProductSpecification';
 
 function ProductDetail() {
-    return(
-        <></>
+
+    const { id } = useParams<{ id: string }>();
+    const [product, setProduct] = useState<DataType | null>(null);
+    const [products, setProducts] = useState<DataType[]>([]);
+    const [selectedTab, setSelectedTab] = useState<'overview' | 'features'>('overview');
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const data = await fetchData();
+                const selectedProduct = data.find((product) => product.id.toString() === id);
+                setProduct(selectedProduct || null);
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
+
+    useEffect(() => {
+        // Fetch products data on component mount
+        const getProducts = async () => {
+            try {
+                const data = await fetchData();
+                setProducts(data);
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            }
+        };
+        getProducts();
+    }, []);
+
+    return (
+        <>
+            <header>
+                <CommomPageHeader />
+            </header>
+            <main>
+                {product && (
+                    <>
+                        <section>
+                            <h1>{product.name}</h1>
+                            <h2>USD {product.price}</h2>
+                            <div className="tabs">
+                                <button className={selectedTab === 'overview' ? 'tab tab-active' : 'tab'}
+                                    onClick={() => setSelectedTab('overview')}>Overview</button>
+                                <button className={selectedTab === 'features' ? 'tab tab-active' : 'tab'}
+                                    onClick={() => setSelectedTab('features')}>Features</button>
+                            </div>
+                        </section>
+                        <section>
+                            {selectedTab === 'overview' ? (
+                                <ProductOverview
+                                    key={product.id}
+                                    img={product.img}
+                                    reviews={product.reviews}
+                                    name={product.name}
+                                    price={product.price}
+                                    products={products}
+                                />
+                            ) : (
+                                <ProductSpecification
+                                    details={product.details}
+                                    description={product.description}
+                                />
+                            )}
+                        </section>
+                    </>
+                )}
+            </main>
+        </>
     )
 }
 

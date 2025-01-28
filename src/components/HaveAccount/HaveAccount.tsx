@@ -8,9 +8,9 @@ interface HaveAccountProps {
     linkPath: string;
 }
 
-function HaveAccount(props: HaveAccountProps) {
+function HaveAccount({ question, link, linkPath }: HaveAccountProps) {
     return (
-        <p className="haveAccount">{props.question} <Link to={props.linkPath} className="accountLink">{props.link}</Link></p>
+        <p className="haveAccount">{question} <Link to={linkPath} className="accountLink">{link}</Link></p>
     )
 }
 
