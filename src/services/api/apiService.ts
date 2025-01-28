@@ -9,11 +9,12 @@ export interface Review {
 }
 
 export interface DataType {
-  id: number;
+  id: string;
   name: string;
   category: string;
   price: number;
   details: string;
+  description: string;
   img: string;
   reviews: Review[];
   popularity: number;

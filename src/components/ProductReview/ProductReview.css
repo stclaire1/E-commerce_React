@@ -1,0 +1,5 @@
+.productReviewContainer {
+    > div{
+        display: flex;
+    }
+}

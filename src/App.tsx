@@ -45,7 +45,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/search" element={<Search />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/productdetail/:id" element={<ProductDetail />} />
+        <Route path="/productDetail/:id" element={<ProductDetail />} />
         <Route path="/shoppingcart" element={!user ? <Navigate to="/login" replace /> : <ShoppingCart />} />
       </Routes>
     </Router>
