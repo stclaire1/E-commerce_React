@@ -4,12 +4,12 @@ import { getAuth, signInWithPopup } from "firebase/auth";
 import { provider } from '../../services/context/Authentication/AuthProvider'
 import { useNavigate } from "react-router-dom";
 import './GoogleButton.css';
-import { AuthContext } from '../../services/context/Authentication/AuthContext';
+import { useAuth } from '../../services/context/Authentication/AuthContext';
 
 function GoogleButton() {
 
     const navigate = useNavigate();
-    const user = useContext(AuthContext);
+    const user = useAuth();
     const auth = getAuth();
 
     const handleGoogleSignIn = () => {

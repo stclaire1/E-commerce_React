@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchData, DataType, Review } from '../../services/api/apiService';
+import { fetchData, DataType } from '../../services/api/apiService';
 import { useNavigate, useParams } from 'react-router-dom';
 import CommomPageHeader from '../../components/CommomPageHeader/CommomPageHeader';
 import './ProductDetail.css';

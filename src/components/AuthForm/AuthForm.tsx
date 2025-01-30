@@ -28,15 +28,15 @@ function AuthForm({ isLogin }: AuthLoginProps) {
     
         try {
           if (isLogin) {
-            // faz o login
+            // log the user in
             const user = await signIn(email, password);
             console.log("Usuário autenticado:", user);
-            navigate("/");  // redireciona para a home após login
+            navigate("/");  // redirect to home after login
           } else {
-            // cria um novo usuario
+            // create a new user
             const user = await createAccount(email, password);
             console.log("Novo usuário criado:", user);
-            navigate("/login");  // redireciona para o login após criação do usuário
+            navigate("/login");  // redirect to login after creating a new user
           }
         } catch (error) {
           console.error("Erro ao fazer a operação:", error);

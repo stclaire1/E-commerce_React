@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import HomePageHeader from '../../components/HomePageHeader/HomePageHeader';
-import { AuthContext } from '../../services/context/Authentication/AuthContext'
+import { useAuth } from '../../services/context/Authentication/AuthContext'
 import TextInput from '../../components/TextInput/TextInput';
 import FilterButton from '../../components/FilterButton/FilterButton';
 import { fetchData, DataType } from '../../services/api/apiService';
@@ -11,7 +11,7 @@ import SimpleCard from '../../components/SimpleCard/SimpleCard';
 
 function Home() {
 
-  const user = useContext(AuthContext);
+  const user = useAuth();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [products, setProducts] = useState<DataType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<DataType[]>([]);
@@ -19,7 +19,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleInputFocus = () => {
-      navigate('/search');
+    navigate('/search');
   }
 
   const categoryMap: { [key: string]: string } = {
@@ -67,7 +67,7 @@ function Home() {
         <section>
           <h1>Hi, {user ? user.displayName : 'welcome!'}</h1>
           <h2>What are you looking for today?</h2>
-          <TextInput onFocus={handleInputFocus}/>
+          <TextInput onFocus={handleInputFocus} />
         </section>
         <section>
           <div className="filterContainer">

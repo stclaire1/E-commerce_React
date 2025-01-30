@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import './HomePageHeader.css'
 import logo from '../../../public/logo-full.svg'
 import profilePic from '../../../public/profile-pic.jpg'
-import { AuthContext } from '../../services/context/Authentication/AuthContext';
+import { useAuth } from '../../services/context/Authentication/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { logOut } from '../../services/authServices';
 
 function HomePageHeader() {
 
-    const user = useContext(AuthContext);
+    const user = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = async () => {

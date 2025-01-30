@@ -4,10 +4,13 @@ import TextInput from '../../components/TextInput/TextInput';
 import { DataType, fetchData } from '../../services/api/apiService';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
 import './Search.css';
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
     const [products, setProducts] = useState<DataType[]>([]);
     const [searchName, setSearchName] = useState<string>('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getProducts = async () => {
@@ -31,10 +34,14 @@ function Search() {
         return sortedProducts.slice(0, 3);
     }
 
+    const handleCartIconClick = () => {
+        navigate('/shoppingCart');
+      }
+
     return(
         <>
             <header>
-                <CommomPageHeader pageTitle="Search" icon="shopping-cart"/>
+                <CommomPageHeader pageTitle="Search" icon="shopping-cart" onClick={handleCartIconClick}/>
             </header>
             <main>
                 <TextInput onFocus={() => {}} onChange={(e) => setSearchName(e.target.value)} />
