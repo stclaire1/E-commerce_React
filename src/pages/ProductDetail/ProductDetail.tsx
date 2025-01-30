@@ -28,7 +28,6 @@ function ProductDetail() {
     }, [id]);
 
     useEffect(() => {
-        // Fetch products data on component mount
         const getProducts = async () => {
             try {
                 const data = await fetchData();
@@ -65,7 +64,7 @@ function ProductDetail() {
                                     img={product.img}
                                     reviews={product.reviews}
                                     name={product.name}
-                                    price={product.price}
+                                    price={`USD ${product.price}`}
                                     products={products}
                                 />
                             ) : (

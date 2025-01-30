@@ -21,7 +21,7 @@ interface Product {
 interface ProductReviewProps {
     img: string;
     name: string;
-    price: number;
+    price: number | string;
     reviews: Review[];
     products: Product[];
 }
@@ -40,7 +40,7 @@ function ProductOverview({ img, reviews, name, products }: ProductReviewProps) {
             <div className="carouselContainer">
                 <Carousel>
                     {products.slice(0, 5).map((product) => (
-                        <SimpleCard key={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} />
+                        <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
                     ))}
                 </Carousel>
             </div>

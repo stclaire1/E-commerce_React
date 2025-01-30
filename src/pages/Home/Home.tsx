@@ -6,7 +6,7 @@ import FilterButton from '../../components/FilterButton/FilterButton';
 import { fetchData, DataType } from '../../services/api/apiService';
 import Carousel from '../../components/Carousel/Carousel';
 import SalesCard from '../../components/SalesCard/SalesCard';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
 
 function Home() {
@@ -15,6 +15,12 @@ function Home() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [products, setProducts] = useState<DataType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<DataType[]>([]);
+
+  const navigate = useNavigate();
+
+  const handleInputFocus = () => {
+      navigate('/search');
+  }
 
   const categoryMap: { [key: string]: string } = {
     Headset: 'headsets',
@@ -26,8 +32,8 @@ function Home() {
     setActiveCategory(mappedCategory);
   };
 
+
   useEffect(() => {
-    // Fetch products data on component mount
     const getProducts = async () => {
       try {
         const data = await fetchData();
@@ -40,7 +46,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    // Filter products based on the selected category
+    // filter products based on the selected category
     if (activeCategory) {
       setFilteredProducts(products.filter((product) => product.category === activeCategory));
     } else {
@@ -61,7 +67,7 @@ function Home() {
         <section>
           <h1>Hi, {user ? user.displayName : 'welcome!'}</h1>
           <h2>What are you looking for today?</h2>
-          <TextInput />
+          <TextInput onFocus={handleInputFocus}/>
         </section>
         <section>
           <div className="filterContainer">
@@ -97,7 +103,7 @@ function Home() {
           <div className="carouselContainer">
             <Carousel>
               {products.slice(0, 5).map((product) => (
-                <SimpleCard key={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} />
+                <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
               ))}
             </Carousel>
           </div>
