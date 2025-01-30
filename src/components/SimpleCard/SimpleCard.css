@@ -1,0 +1,28 @@
+.simpleCardContainerVertical {
+        display: flex;
+        flex-direction: column;
+
+        >div>img {
+            width: 80px;
+        }
+    }
+
+    .simpleCardContainerHorizontal {
+        display: flex;
+        flex-direction: row;
+
+        >div>img {
+            width: 80px;
+        }
+    }
+
+    .simpleCardFooter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
+        .simpleCardRatingContainer {
+            display: flex;
+            align-items: center;
+        }
+    }
