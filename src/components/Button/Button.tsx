@@ -4,6 +4,7 @@ import './Button.css';
 interface ButtonProps {
     type: "button" | "submit";
     btnText: string;
+    onClick?: () => void;
 }
 
 function Button({ type, btnText }: ButtonProps) {

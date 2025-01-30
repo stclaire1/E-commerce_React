@@ -13,8 +13,8 @@ function HomePageHeader() {
 
     const handleLogout = async () => {
         try {
-            await logOut();  // Chama a função de logout
-            navigate('/login');  // Redireciona para a página de login após logout
+            await logOut();  // logout function
+            navigate('/login');  // redirect to login after logout
         } catch (error) {
             console.error('Erro ao fazer logout:', error);
         }
@@ -37,10 +37,10 @@ function HomePageHeader() {
                         <Link to="/shoppingcart">Shopping Cart</Link>
                     </li>
                     {user ? (
-                        // se o usuário estiver logado exibe "Sign Out"
+                        // if user is loggeed in "Sign Out"
                         <li><button onClick={handleLogout}>Sign Out</button></li>
                     ) : (
-                        // caso contrário exibe "Sign In"
+                        // if not "Sign In"
                         <li><Link to="/login">Sign In</Link></li>
                     )}
                 </ul>
