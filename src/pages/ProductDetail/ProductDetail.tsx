@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { fetchData, DataType, Review } from '../../services/api/apiService';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CommomPageHeader from '../../components/CommomPageHeader/CommomPageHeader';
 import './ProductDetail.css';
 import ProductOverview from '../../components/ProductOverView/ProductOverview';
 import ProductSpecification from '../../components/ProductSpecification/ProductSpecification';
+import Button from '../../components/Button/Button';
+import { useCart } from '../../services/context/ShoppingCart/CartProvider';
 
 function ProductDetail() {
 
@@ -12,6 +14,9 @@ function ProductDetail() {
     const [product, setProduct] = useState<DataType | null>(null);
     const [products, setProducts] = useState<DataType[]>([]);
     const [selectedTab, setSelectedTab] = useState<'overview' | 'features'>('overview');
+    const { addToCart } = useCart();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -39,10 +44,26 @@ function ProductDetail() {
         getProducts();
     }, []);
 
+    const handleAddToCart = () => {
+        if(product) {
+            addToCart({
+                id: product.id,
+                img: product.img,
+                name: product.name,
+                price: product.price,
+                quantity: 1,
+            });
+        }
+    };
+
+    const handleCartIconClick = () => {
+        navigate('/shoppingCart');
+    }
+
     return (
         <>
             <header>
-                <CommomPageHeader />
+                <CommomPageHeader icon="shopping-cart" onClick={handleCartIconClick}/>
             </header>
             <main>
                 {product && (
@@ -74,6 +95,7 @@ function ProductDetail() {
                                 />
                             )}
                         </section>
+                        <Button type="button" btnText="Add to cart" onClick={handleAddToCart} />
                     </>
                 )}
             </main>

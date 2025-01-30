@@ -8,7 +8,7 @@ import Search from './pages/Search/Search';
 import Products from './pages/Products/Products';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
-import { AuthContext } from './services/context/AuthContext';
+import { AuthContext } from './services/context/Authentication/AuthContext';
 
 function App() {
   const [data, setData] = useState<DataType[]>([]);

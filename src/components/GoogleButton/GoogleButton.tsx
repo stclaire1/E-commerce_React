@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import googleIcon from '../../../public/google-logo.svg'
 import { getAuth, signInWithPopup } from "firebase/auth";
-import { provider } from '../../services/context/AuthProvider'
+import { provider } from '../../services/context/Authentication/AuthProvider'
 import { useNavigate } from "react-router-dom";
 import './GoogleButton.css';
-import { AuthContext } from '../../services/context/AuthContext';
+import { AuthContext } from '../../services/context/Authentication/AuthContext';
 
 function GoogleButton() {
 

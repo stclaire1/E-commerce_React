@@ -34,7 +34,7 @@ function Search() {
     return(
         <>
             <header>
-                <CommomPageHeader pageTitle="Search" />
+                <CommomPageHeader pageTitle="Search" icon="shopping-cart"/>
             </header>
             <main>
                 <TextInput onFocus={() => {}} onChange={(e) => setSearchName(e.target.value)} />

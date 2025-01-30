@@ -7,6 +7,7 @@ import FilterButton from '../../components/FilterButton/FilterButton';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
 import { DataType, fetchData } from '../../services/api/apiService';
 import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Products() {
     const [isOpen, setOpen] = useState(false);
@@ -14,6 +15,8 @@ function Products() {
     const [filteredProducts, setFilteredProducts] = useState<DataType[]>([]);
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
     const [sortBy, setSortBy] = useState<string | null>(null);
+
+    const navigate = useNavigate();
 
     const categoryMap: { [key: string]: string } = {
         Headset: 'headsets',
@@ -63,10 +66,14 @@ function Products() {
         setFilteredProducts(filtered);
       };
 
+      const handleCartIconClick = () => {
+        navigate('/shoppingCart');
+      }
+
     return (
         <>
             <header>
-                <CommomPageHeader />
+                <CommomPageHeader icon="shopping-cart" onClick={handleCartIconClick}/>
             </header>
             <main>
                 <section>

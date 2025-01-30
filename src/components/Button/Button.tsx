@@ -7,9 +7,9 @@ interface ButtonProps {
     onClick?: () => void;
 }
 
-function Button({ type, btnText }: ButtonProps) {
+function Button({ type, btnText, onClick }: ButtonProps) {
     return (
-        <button type={type} className="button">
+        <button type={type} className="button" onClick={onClick}>
             {btnText}
         </button>
     );

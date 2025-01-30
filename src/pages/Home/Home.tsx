@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import HomePageHeader from '../../components/HomePageHeader/HomePageHeader';
-import { AuthContext } from '../../services/context/AuthContext'
+import { AuthContext } from '../../services/context/Authentication/AuthContext'
 import TextInput from '../../components/TextInput/TextInput';
 import FilterButton from '../../components/FilterButton/FilterButton';
 import { fetchData, DataType } from '../../services/api/apiService';

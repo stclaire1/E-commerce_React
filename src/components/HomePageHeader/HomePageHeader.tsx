@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './HomePageHeader.css'
 import logo from '../../../public/logo-full.svg'
 import profilePic from '../../../public/profile-pic.jpg'
-import { AuthContext } from '../../services/context/AuthContext';
+import { AuthContext } from '../../services/context/Authentication/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { logOut } from '../../services/authServices';
 
@@ -34,7 +34,7 @@ function HomePageHeader() {
                         <Link to="/products">Explore Products</Link>
                     </li>
                     <li>
-                        <Link to="/shoppingcart">Shopping Cart</Link>
+                        <Link to="/shoppingCart">Shopping Cart</Link>
                     </li>
                     {user ? (
                         // if user is loggeed in "Sign Out"
