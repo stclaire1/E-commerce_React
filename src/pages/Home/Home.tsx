@@ -22,6 +22,7 @@ function Home() {
     navigate('/search');
   }
 
+  //this mapping is necessary to match the category names from the API with the ones we use in the app "Headset" and "Headphone" in the interface / "headsets" and "headphones" in the API
   const categoryMap: { [key: string]: string } = {
     Headset: 'headsets',
     Headphone: 'headphones',
@@ -50,7 +51,7 @@ function Home() {
     if (activeCategory) {
       setFilteredProducts(products.filter((product) => product.category === activeCategory));
     } else {
-      setFilteredProducts(products); // Show all products if no category is selected
+      setFilteredProducts(products); // show all products if no category is selected
     }
   }, [activeCategory, products]);
 

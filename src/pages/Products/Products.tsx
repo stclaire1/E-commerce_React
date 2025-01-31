@@ -21,59 +21,70 @@ function Products() {
     const categoryMap: { [key: string]: string } = {
         Headset: 'headsets',
         Headphone: 'headphones',
-      };
+    };
 
-      useEffect(() => {
+    useEffect(() => {
         const getProducts = async () => {
-          try {
-            const data = await fetchData();
-            setProducts(data);
-            setFilteredProducts(data);
-          } catch (error) {
-            console.error('Failed to fetch products:', error);
-          }
+            try {
+                const data = await fetchData();
+                setProducts(data);
+                setFilteredProducts(data);
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            }
         };
         getProducts();
-      }, []);
+    }, []);
 
-      const handleCategoryClick = (category: string) => {
+    const handleCategoryClick = (category: string) => {
         setActiveCategory((prev) => (prev === categoryMap[category] ? null : categoryMap[category]));
-      };
+    };
 
-      const handleSortBy = (criteria: string) => {
-        setSortBy((prev) => (prev === criteria ? null : criteria));
-      };
-    
+    const handleSortByClick = (sortedBy: string) => {
+        setSortBy((prev) => (prev === sortedBy ? null : sortedBy));
+    };
 
-      const applyFilters = () => {
-        let filtered = products;
-    
+    const applyFilters = () => {
+        let filtered = [...products];
+
         if (activeCategory) {
-          filtered = filtered.filter((product) => product.category === activeCategory);
+            filtered = filtered.filter((product) => product.category === activeCategory);
         }
-    
-        if (sortBy) {
-          filtered = [...filtered].sort((a, b) => {
-            if (sortBy === 'popularity') return b.popularity - a.popularity;
-            if (sortBy === 'newest') return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-            if (sortBy === 'oldest') return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
-            if (sortBy === 'high price') return b.price - a.price;
-            if (sortBy === 'low price') return a.price - b.price;
-            return 0;
-          });
-        }
-    
-        setFilteredProducts(filtered);
-      };
 
-      const handleCartIconClick = () => {
+        if (sortBy) {
+            switch (sortBy) {
+                case 'popularity':
+                    filtered.sort((a, b) => b.popularity - a.popularity);
+                    break;
+                case 'newest':
+                    filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+                    break;
+                case 'oldest':
+                    filtered.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+                    break;
+                case 'high price':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'low price':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        setFilteredProducts(filtered);
+        setOpen(false);
+    };
+
+    const handleCartIconClick = () => {
         navigate('/shoppingCart');
-      }
+    }
 
     return (
         <>
             <header>
-                <CommomPageHeader icon="shopping-cart" onClick={handleCartIconClick}/>
+                <CommomPageHeader icon="shopping-cart" onClick={handleCartIconClick} />
             </header>
             <main>
                 <section>
@@ -88,57 +99,57 @@ function Products() {
                                     <p>Category</p>
                                     <div>
                                         <FilterButton
-                                            btnText="Headphone" 
-                                            onClick={() => handleCategoryClick("headphone")}
-                                            isActive={activeCategory === "headphone"} 
+                                            btnText="Headphone"
+                                            onClick={() => handleCategoryClick("Headphone")}
+                                            isActive={activeCategory === "headphones"}
                                         />
                                     </div>
                                     <div>
                                         <FilterButton
-                                            btnText="Headset" 
-                                            onClick={() => handleCategoryClick("headset")}
-                                            isActive={activeCategory === "headset"} 
+                                            btnText="Headset"
+                                            onClick={() => handleCategoryClick("Headset")}
+                                            isActive={activeCategory === "headsets"}
                                         />
                                     </div>
                                 </div>
                                 <div>
                                     <p>Sort By</p>
                                     <div>
-                                        <FilterButton
-                                            btnText="Popularity" 
-                                            onClick={() => handleSortBy("popularity")}
-                                            isActive={sortBy === "popularity"} 
+                                    <FilterButton
+                                            btnText="Popularity"
+                                            onClick={() => handleSortByClick("popularity")}
+                                            isActive={sortBy === "popularity"}
                                         />
                                     </div>
                                     <div>
                                         <FilterButton
-                                            btnText="Newest" 
-                                            onClick={() => handleSortBy("newest")}
-                                            isActive={sortBy === "newest"} 
+                                            btnText="Newest"
+                                            onClick={() => handleSortByClick("newest")}
+                                            isActive={sortBy === "newest"}
                                         />
                                     </div>
                                     <div>
                                         <FilterButton
-                                            btnText="Oldest" 
-                                            onClick={() => handleSortBy("oldest")}
-                                            isActive={sortBy === "oldest"} 
+                                            btnText="Oldest"
+                                            onClick={() => handleSortByClick("oldest")}
+                                            isActive={sortBy === "oldest"}
                                         />
                                     </div>
                                     <div>
                                         <FilterButton
-                                            btnText="High Price" 
-                                            onClick={() => handleSortBy("high price")}
-                                            isActive={sortBy === "high price"} 
+                                            btnText="High Price"
+                                            onClick={() => handleSortByClick("high price")}
+                                            isActive={sortBy === "high price"}
                                         />
                                     </div>
                                     <div>
                                         <FilterButton
-                                            btnText="Low Price" 
-                                            onClick={() => handleSortBy("low price")}
-                                            isActive={sortBy === "low price"} 
+                                            btnText="Low Price"
+                                            onClick={() => handleSortByClick("low price")}
+                                            isActive={sortBy === "low price"}
                                         />
                                     </div>
-                                    <Button type="button" btnText="Apply Filter" onClick={applyFilters}/>
+                                    <Button type="button" btnText="Apply Filter" onClick={applyFilters} />
                                 </div>
                             </Sheet.Content>
                         </Sheet.Container>
