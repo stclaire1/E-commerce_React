@@ -33,7 +33,6 @@ function Home() {
     setActiveCategory(mappedCategory);
   };
 
-
   useEffect(() => {
     const getProducts = async () => {
       try {
