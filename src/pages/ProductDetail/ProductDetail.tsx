@@ -68,9 +68,11 @@ function ProductDetail() {
             <main>
                 {product && (
                     <>
-                        <section>
-                            <h1>{product.name}</h1>
-                            <h2>USD {product.price}</h2>
+                        <section className="productDetailPageTitleContainer">
+                            <div>
+                                <h1>{product.name}</h1>
+                                <p>USD {product.price}</p>
+                            </div>
                             <div className="tabs">
                                 <button className={selectedTab === 'overview' ? 'tab tab-active' : 'tab'}
                                     onClick={() => setSelectedTab('overview')}>Overview</button>
@@ -78,7 +80,7 @@ function ProductDetail() {
                                     onClick={() => setSelectedTab('features')}>Features</button>
                             </div>
                         </section>
-                        <section>
+                        <section className="productInfoContainer">
                             {selectedTab === 'overview' ? (
                                 <ProductOverview
                                     key={product.id}
@@ -95,7 +97,9 @@ function ProductDetail() {
                                 />
                             )}
                         </section>
-                        <Button type="button" btnText="Add to cart" onClick={handleAddToCart} />
+                        <div className="addToCartBtn">
+                            <Button type="button" btnText="Add to cart" onClick={handleAddToCart} />
+                        </div>
                     </>
                 )}
             </main>

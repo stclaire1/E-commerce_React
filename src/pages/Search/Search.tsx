@@ -14,18 +14,18 @@ function Search() {
 
     useEffect(() => {
         const getProducts = async () => {
-          try {
-            const data = await fetchData();
-            setProducts(data);
-          } catch (error) {
-            console.error('Failed to fetch products:', error);
-          }
+            try {
+                const data = await fetchData();
+                setProducts(data);
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            }
         };
         getProducts();
-      }, []);
+    }, []);
 
     const filteredProducts = () => {
-        if (!searchName) return []; 
+        if (!searchName) return [];
         return products.filter((product) => product.name.toLowerCase().includes(searchName.toLowerCase()));
     }
 
@@ -36,17 +36,18 @@ function Search() {
 
     const handleCartIconClick = () => {
         navigate('/shoppingCart');
-      }
+    }
 
-    return(
+    return (
         <>
             <header>
-                <CommomPageHeader pageTitle="Search" icon="shopping-cart" onClick={handleCartIconClick}/>
+                <CommomPageHeader pageTitle="Search" icon="shopping-cart" onClick={handleCartIconClick} />
             </header>
-            <main>
-                <TextInput onFocus={() => {}} onChange={(e) => setSearchName(e.target.value)} />
-                <section>
-                    {filteredProducts().map((product) => (
+            <main className="searchPageMain">
+                <section className="searchContainer">
+                    <TextInput onFocus={() => { }} onChange={(e) => setSearchName(e.target.value)} />
+                    <div className="searchResultsContainer">
+                        {filteredProducts().map((product) => (
                             <SimpleCard
                                 key={product.id}
                                 id={product.id}
@@ -58,6 +59,7 @@ function Search() {
                                 isVertical={false}
                             />
                         ))}
+                    </div>
                 </section>
                 <section className="popularProductsContainer">
                     <p>Popular Product</p>

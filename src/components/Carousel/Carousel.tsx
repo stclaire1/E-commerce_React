@@ -13,7 +13,10 @@ function Carousel({ children }: CarouselProps) {
             modules={[Navigation, Pagination]}
             navigation
             pagination={{ clickable: true }}
-> 
+            loop={true}
+            slidesPerView={1}
+            spaceBetween={20}
+        > 
             {React.Children.map(children, child => (
                 <SwiperSlide>{child}</SwiperSlide>
             ))}

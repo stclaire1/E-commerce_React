@@ -1,0 +1,51 @@
+.mainProductImg {
+    display: flex;
+    align-items: center;
+
+    background-color: var(--light-grey);
+    width: 90%;
+    border-radius: 15px;
+    margin: auto;
+    margin-block: 2rem;
+
+    img {
+        width: 100%;
+    }
+}
+
+.productOverviewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    padding-inline: 1rem;
+    
+    .overviewReviews {
+        margin-block-end: 2rem;
+        font-weight: 500;
+    }
+}
+
+.productOverviewCarouselContainer {
+    background-color: var(--light-grey);
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    margin-block-end: 2rem;
+
+    .productOverviewCarouselHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        margin-block-end: 15px;
+
+        >p {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        >a {
+            color: var(--dark-grey);
+        }
+    }
+}

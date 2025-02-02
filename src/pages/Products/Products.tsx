@@ -8,6 +8,8 @@ import SimpleCard from '../../components/SimpleCard/SimpleCard';
 import { DataType, fetchData } from '../../services/api/apiService';
 import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import './Products.css';
+import FeatherIcon from 'feather-icons-react';
 
 function Products() {
     const [isOpen, setOpen] = useState(false);
@@ -87,67 +89,79 @@ function Products() {
                 <CommomPageHeader icon="shopping-cart" onClick={handleCartIconClick} />
             </header>
             <main>
-                <section>
+                <section className="productsTitleAndFilter">
                     <h1>All Products</h1>
-                    <button onClick={() => setOpen(true)}>Filter</button>
-                    <Sheet isOpen={isOpen} onClose={() => setOpen(false)}>
+                    <button onClick={() => setOpen(true)} className="productsFilterBtn">
+                        <FeatherIcon icon="sliders" className="sliderIcon"/>
+                        Filter
+                    </button>
+                    <Sheet isOpen={isOpen} onClose={() => setOpen(false)} className="filterSheet">
                         <Sheet.Container>
                             <Sheet.Header />
                             <Sheet.Content>
-                                <p>Filter</p>
-                                <div>
+                                <p className="filterSheetTitle">Filter</p>
+                                <div className="categoryContainer">
                                     <p>Category</p>
-                                    <div>
-                                        <FilterButton
-                                            btnText="Headphone"
-                                            onClick={() => handleCategoryClick("Headphone")}
-                                            isActive={activeCategory === "headphones"}
-                                        />
-                                    </div>
-                                    <div>
-                                        <FilterButton
-                                            btnText="Headset"
-                                            onClick={() => handleCategoryClick("Headset")}
-                                            isActive={activeCategory === "headsets"}
-                                        />
+                                    <div className="categoryBtnContainer">
+                                        <div>
+                                            <FilterButton
+                                                btnText="Headphone"
+                                                onClick={() => handleCategoryClick("Headphone")}
+                                                isActive={activeCategory === "headphones"}
+                                            />
+                                        </div>
+                                        <div>
+                                            <FilterButton
+                                                btnText="Headset"
+                                                onClick={() => handleCategoryClick("Headset")}
+                                                isActive={activeCategory === "headsets"}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div className="sortByContainer">
                                     <p>Sort By</p>
-                                    <div>
-                                    <FilterButton
-                                            btnText="Popularity"
-                                            onClick={() => handleSortByClick("popularity")}
-                                            isActive={sortBy === "popularity"}
-                                        />
-                                    </div>
-                                    <div>
+                                    <div className="sortByBtnContainer">
+                                        <div>
                                         <FilterButton
-                                            btnText="Newest"
-                                            onClick={() => handleSortByClick("newest")}
-                                            isActive={sortBy === "newest"}
-                                        />
-                                    </div>
-                                    <div>
-                                        <FilterButton
-                                            btnText="Oldest"
-                                            onClick={() => handleSortByClick("oldest")}
-                                            isActive={sortBy === "oldest"}
-                                        />
-                                    </div>
-                                    <div>
-                                        <FilterButton
-                                            btnText="High Price"
-                                            onClick={() => handleSortByClick("high price")}
-                                            isActive={sortBy === "high price"}
-                                        />
-                                    </div>
-                                    <div>
-                                        <FilterButton
-                                            btnText="Low Price"
-                                            onClick={() => handleSortByClick("low price")}
-                                            isActive={sortBy === "low price"}
-                                        />
+                                                btnText="Popularity"
+                                                onClick={() => handleSortByClick("popularity")}
+                                                isActive={sortBy === "popularity"}
+                                                isSortBy={true}
+                                            />
+                                        </div>
+                                        <div>
+                                            <FilterButton
+                                                btnText="Newest"
+                                                onClick={() => handleSortByClick("newest")}
+                                                isActive={sortBy === "newest"}
+                                                isSortBy={true}
+                                            />
+                                        </div>
+                                        <div>
+                                            <FilterButton
+                                                btnText="Oldest"
+                                                onClick={() => handleSortByClick("oldest")}
+                                                isActive={sortBy === "oldest"}
+                                                isSortBy={true}
+                                            />
+                                        </div>
+                                        <div>
+                                            <FilterButton
+                                                btnText="High Price"
+                                                onClick={() => handleSortByClick("high price")}
+                                                isActive={sortBy === "high price"}
+                                                isSortBy={true}
+                                            />
+                                        </div>
+                                        <div>
+                                            <FilterButton
+                                                btnText="Low Price"
+                                                onClick={() => handleSortByClick("low price")}
+                                                isActive={sortBy === "low price"}
+                                                isSortBy={true}
+                                            />
+                                        </div>
                                     </div>
                                     <Button type="button" btnText="Apply Filter" onClick={applyFilters} />
                                 </div>
@@ -156,7 +170,7 @@ function Products() {
                         <Sheet.Backdrop />
                     </Sheet>
                 </section>
-                <section>
+                <section className="productsContainer">
                     {filteredProducts.map((product) => (
                         <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={true} reviews={product.reviews} isVertical={true} />
                     ))}

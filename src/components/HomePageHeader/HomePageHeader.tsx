@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './HomePageHeader.css'
 import logo from '../../../public/logo-full.svg'
 import profilePic from '../../../public/profile-pic.jpg'
@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { logOut } from '../../services/authServices';
 
 function HomePageHeader() {
+    const [menuOpen, setMenuOpen] = useState(true);
 
     const user = useAuth();
     const navigate = useNavigate();
@@ -19,34 +20,51 @@ function HomePageHeader() {
             console.error('Erro ao fazer logout:', error);
         }
     };
-    
-    return(
+
+    const toggleMenu = () => {
+        setMenuOpen((current) => !current);
+    };
+
+    return (
         <div className="homeHeaderContainer">
-            <nav>
+            <div>
+            <button
+                className="menuToggle"
+                id="menuToggle"
+                aria-label="Menu button"
+                aria-expanded={menuOpen}
+                onClick={toggleMenu}
+            >
+                {menuOpen ? "☰" : "✖"}
+            </button>
+            <nav className={`navLinks ${menuOpen ? "" : "menuActive"}`}>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/" onClick={toggleMenu} className="menuItem">Home</Link>
                     </li>
                     <li>
-                        <Link to="/search">Search</Link>
+                        <Link to="/search" onClick={toggleMenu} className="menuItem">Search</Link>
                     </li>
                     <li>
-                        <Link to="/products">Explore Products</Link>
+                        <Link to="/products" onClick={toggleMenu} className="menuItem">Explore Products</Link>
                     </li>
                     <li>
-                        <Link to="/shoppingCart">Shopping Cart</Link>
+                        <Link to="/shoppingCart" onClick={toggleMenu} className="menuItem">Shopping Cart</Link>
                     </li>
                     {user ? (
-                        // if user is loggeed in "Sign Out"
-                        <li><button onClick={handleLogout}>Sign Out</button></li>
+                        <li>
+                            <button onClick={handleLogout} className="signOutButton">Sign Out</button>
+                        </li>
                     ) : (
-                        // if not "Sign In"
-                        <li><Link to="/login">Sign In</Link></li>
+                        <li>
+                            <Link to="/login" onClick={toggleMenu} className="menuItem">Sign In</Link>
+                        </li>
                     )}
                 </ul>
             </nav>
+            </div>
             <img src={logo} alt="Logo of the Audio App" />
-            <img src={profilePic} alt="User profile picture" />
+            <img src={profilePic} alt="User profile picture" className="homeProfilePic"/>
         </div>
     )
 }

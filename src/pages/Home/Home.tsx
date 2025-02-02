@@ -8,6 +8,7 @@ import Carousel from '../../components/Carousel/Carousel';
 import SalesCard from '../../components/SalesCard/SalesCard';
 import { Link, useNavigate } from 'react-router-dom';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
+import './Home.css';
 
 function Home() {
 
@@ -29,8 +30,7 @@ function Home() {
   };
 
   const handleCategoryClick = (category: string) => {
-    const mappedCategory = categoryMap[category];
-    setActiveCategory(mappedCategory);
+    setActiveCategory((prev) => (prev === categoryMap[category] ? null : categoryMap[category]));
   };
 
   useEffect(() => {
@@ -64,12 +64,12 @@ function Home() {
         <HomePageHeader />
       </header>
       <main>
-        <section>
-          <h1>Hi, {user ? user.displayName : 'welcome!'}</h1>
+        <section className="homeContainer">
+          <p>Hi, {user?.displayName ? `${user.displayName}!` : 'welcome!'}</p>
           <h2>What are you looking for today?</h2>
           <TextInput onFocus={handleInputFocus} />
         </section>
-        <section>
+        <section className="homeProductsContainer">
           <div className="filterContainer">
             <FilterButton
               btnText="Headphone"
@@ -82,31 +82,31 @@ function Home() {
               isActive={activeCategory === 'headsets'}
             />
           </div>
-        </section>
-        <section>
-          <Carousel>
-            {filteredProducts.map((product) => (
-              <SalesCard
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                img={product.img}
-              />
-            ))}
-          </Carousel>
-        </section>
-        <section>
-          <div>
-            <p>Featured Products</p>
-            <Link to="products">See all</Link>
-          </div>
-          <div className="carouselContainer">
+          <section className="homePageCarouselContainer">
             <Carousel>
-              {products.slice(0, 5).map((product) => (
-                <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
+              {filteredProducts.map((product) => (
+                <SalesCard
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  img={product.img}
+                />
               ))}
             </Carousel>
-          </div>
+          </section>
+          <section className="featuredProductsContainer">
+            <div>
+              <p>Featured Products</p>
+              <Link to="products" className="seeAllLink">See all</Link>
+            </div>
+            <div className="carouselContainer">
+              <Carousel>
+                {products.slice(0, 10).map((product) => (
+                  <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
+                ))}
+              </Carousel>
+            </div>
+          </section>
         </section>
       </main>
     </>

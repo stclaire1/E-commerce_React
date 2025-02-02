@@ -25,7 +25,7 @@ function CommomPageHeader({ pageTitle, icon, onClick }: CommomPageHeaderProps) {
                 <FeatherIcon icon="chevron-left" />
             </button>
             {pageTitle && <p>{pageTitle}</p>}
-            <div onClick={onClick}>
+            <div onClick={onClick} className="cartIcon">
                 <FeatherIcon icon={icon} />
                 {totalItems > 0 && <span className="cartBadge">{totalItems}</span>}
             </div>

@@ -31,7 +31,7 @@ function SimpleCard({ id, img, name, price, showDetails, reviews, isVertical }: 
     const averageRating = reviews && calculateAverageRating(reviews).toFixed(1);
 
     const navigate = useNavigate();
-    
+
     const handleCardClick = () => {
         navigate(`/productDetail/${id}`);
     }
@@ -39,24 +39,26 @@ function SimpleCard({ id, img, name, price, showDetails, reviews, isVertical }: 
     const cardCustomStyle = isVertical ? "simpleCardContainerVertical" : "simpleCardContainerHorizontal";
 
     return (
-        <div className={cardCustomStyle} onClick={handleCardClick}>
+        <div className={`simpleCardContainer ${cardCustomStyle}`} onClick={handleCardClick}>
             <div>
                 <img src={img} alt="" />
             </div>
-            <div>
+            <div className="simpleCardInfo">
                 <div>
-                    <p>{name}</p>
-                    <p>USD {price}</p>
+                    <p className="simpleCardName">{name}</p>
+                    <p className="simpleCardPrice">USD {price}</p>
                 </div>
                 <div className="simpleCardFooter">
                     {showDetails && (
                         <>
-                            <div className="simpleCardRatingContainer">
-                                <img src={star} alt="" />
-                                <p>{averageRating}</p>
+                            <div className="ratingReviewContainer">
+                                <div className="simpleCardRatingContainer">
+                                    <img src={star} alt="" />
+                                    <p>{averageRating}</p>
+                                </div>
+                                {reviews && <p className="simpleCardReviewContainer">{reviews.length} Reviews</p>}
                             </div>
-                            {reviews && <p>{reviews.length} Reviews</p>}
-                            <FeatherIcon icon="more-vertical" />
+                            <FeatherIcon icon="more-vertical" className="simpleCardOptions"/>
                         </>
                     )}
                 </div>

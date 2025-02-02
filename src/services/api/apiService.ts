@@ -1,4 +1,6 @@
-const API_URL = 'https://run.mocky.io/v3/062e2944-831d-4fa7-9f2d-9c3873dfed30';
+const API_URL = 'https://run.mocky.io/v3/bba352ba-32ad-4d61-a6b8-8007f7e281c7';
+
+// https://run.mocky.io/v3/062e2944-831d-4fa7-9f2d-9c3873dfed30
 
 export interface Review {
   userId: string;

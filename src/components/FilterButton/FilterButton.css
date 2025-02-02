@@ -12,5 +12,19 @@
 .active {
     background-color: var(--primary-color);
     color: var(--white);
-    
+    font-weight: 400;
+}
+
+.sortByBtn {
+    border: 1px solid var(--dark-grey);
+    padding-block: 7px;
+    border-radius: 10px;
+    color: var(--default);
+
+    &.active {
+        background-color: var(--primary-color);
+        color: var(--white);
+        font-weight: 400;
+        border: none;
+    }
 }

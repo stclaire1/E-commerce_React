@@ -1,0 +1,81 @@
+.productsTitleAndFilter {
+    display: flex;
+    flex-direction: column;
+
+    padding-inline: 1rem;
+    margin-block-end: 3rem;
+
+    .productsFilterBtn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+        margin-block-start: 10px;
+        padding-block: 7px;
+        border: 1px solid var(--dark-grey);
+        border-radius: 7px;
+        background-color: transparent;
+        transition: all .3s;
+
+        &:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--light-grey);
+        }
+
+        .sliderIcon {
+            margin-inline-end: 10px;
+        }
+    }
+}
+
+.productsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: var(--light-grey);
+    padding-inline: 1rem;
+    padding-block: 2rem;
+    border-radius: 15px 15px 0 0;
+}
+
+.filterSheet {
+    height: 60vh;
+
+    .react-modal-sheet-content {
+        justify-content: end;
+        position: fixed;
+        bottom: 0px;
+    }
+
+    .react-modal-sheet-container {
+        position: fixed!important;
+        height: auto!important;
+        padding-inline: 1rem;
+    }
+
+    .filterSheetTitle {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-block-end: 1.3rem;
+    }
+
+    .categoryBtnContainer {
+        display: flex;
+        margin-block: 1rem 2.2rem;
+    }
+
+    .sortByBtnContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+
+        margin-block: 1rem 2rem;
+    }
+}

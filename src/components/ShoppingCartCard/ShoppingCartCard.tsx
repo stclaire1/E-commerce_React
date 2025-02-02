@@ -1,5 +1,6 @@
 import FeatherIcon from 'feather-icons-react';
 import React from 'react';
+import './ShoppingCartCard.css';
 
 interface SimpleCardProps {
     id: string;
@@ -14,28 +15,30 @@ interface SimpleCardProps {
 function ShoppingCartCard({ id, img, name, price, quantity, onRemove, onQuantityChange }: SimpleCardProps) {
     return (
         <>
-            <div>
-                <div>
+            <div className="shoppingCartCardContainer">
+                <div className="shoppingCartCardImg">
                     <img src={img} alt="" />
                 </div>
-                <div>
-                    <p>{name}</p>
-                    <p>{`USD ${price}`}</p>
-                </div>
-                <div>
-                <div className="quantity-controls">
-                    <div onClick={() => onQuantityChange(id, 'decrease')}>
-                        <FeatherIcon icon="minus" />
+                <div className="shoppingCartCardInfo">
+                    <div>
+                        <p>{name}</p>
+                        <p className="shoppingCartCardPrice">{`USD ${price}`}</p>
                     </div>
-                    <span>{quantity}</span>
-                    <div onClick={() => onQuantityChange(id, 'increase')}>
-                        <FeatherIcon icon="plus" />
+                    <div>
+                        <div className="quantityControls">
+                            <div onClick={() => onQuantityChange(id, 'decrease')} className="quantityBtnContainer">
+                                <FeatherIcon icon="minus" className="quantityBtn"/>
+                            </div>
+                            <span>{quantity}</span>
+                            <div onClick={() => onQuantityChange(id, 'increase')} className="quantityBtnContainer">
+                                <FeatherIcon icon="plus" className="quantityBtn"/>
+                            </div>
+                        </div>
+                        <div onClick={() => onRemove(id)} className="removeItemBtn">
+                            <FeatherIcon icon="trash-2" className="thrashIcon"/>
+                        </div>
                     </div>
                 </div>
-                <div onClick={() => onRemove(id)}>
-                    <FeatherIcon icon="trash-2" />
-                </div>
-            </div>
             </div>
         </>
     );

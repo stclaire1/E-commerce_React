@@ -3,9 +3,10 @@ import CommomPageHeader from '../../components/CommomPageHeader/CommomPageHeader
 import { useCart } from '../../services/context/ShoppingCart/CartProvider';
 import ShoppingCartCard from '../../components/ShoppingCartCard/ShoppingCartCard';
 import Button from '../../components/Button/Button';
+import './ShoppingCart.css';
 
 function ShoppingCart() {
-    const { cart, removeFromCart, updateQuantity, getTotalPrice, clearCart } = useCart();
+    const { cart, removeFromCart, updateQuantity, getTotalPrice, getTotalItems, clearCart } = useCart();
 
     const handleRemove = (id: string) => {
         removeFromCart(id); //remove an item from the cart
@@ -27,7 +28,7 @@ function ShoppingCart() {
                 <CommomPageHeader pageTitle="Shopping Cart" icon="trash-2" onClick={clearCart} />
             </header>
             <main>
-                <section>
+                <section className="shoppingCartContainer">
                     {cart.length === 0 ? (
                         <p>Your cart is empty.</p>
                     ) : (
@@ -45,8 +46,11 @@ function ShoppingCart() {
                         ))
                     )}
                 </section>
-                <section>
-                    <p>Total: USD {getTotalPrice()}</p>
+                <section className="shoppingCartFooter">
+                    <div className="shoppingCartTotalContainer">
+                        <p>Total {getTotalItems()} Item(s)</p>
+                        <p>USD {getTotalPrice()}</p>
+                    </div>
                     <Button type="button" btnText="Proceed to Checkout"/>
                 </section>
             </main>

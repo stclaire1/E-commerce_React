@@ -2,6 +2,7 @@ import ProductReview from '../ProductReview/ProductReview';
 import { Link } from 'react-router-dom';
 import Carousel from '../Carousel/Carousel';
 import SimpleCard from '../SimpleCard/SimpleCard';
+import './ProductOverview.css';
 
 interface Review {
     userId: string;
@@ -29,22 +30,26 @@ interface ProductReviewProps {
 function ProductOverview({ img, reviews, name, products }: ProductReviewProps) {
         
     return (
-        <section>
-            <p>Reivews ({reviews.length})</p>
-            <img src={img} alt={name} className="mainProductImg" />
-            <ProductReview reviews={reviews} />
-            <div>
-                <p>Another Product</p>
-                <Link to="/products">View all</Link>
+        <>
+            <div className="mainProductImg">
+                <img src={img} alt={name} />
             </div>
-            <div className="carouselContainer">
+            <div className="productOverviewContainer">
+                <p className="overviewReviews">Reviews ({reviews.length})</p>
+                <ProductReview reviews={reviews} />
+            </div>
+            <div className="productOverviewCarouselContainer">
+                <div className="productOverviewCarouselHeader">
+                    <p>Another Product</p>
+                    <Link to="/products">See all</Link>
+                </div>
                 <Carousel>
                     {products.slice(0, 5).map((product) => (
                         <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
                     ))}
                 </Carousel>
             </div>
-        </section>
+        </>
     );
 }
 

@@ -24,8 +24,8 @@ function ProductReview({ reviews }: ProductProps) {
                         <img src={profilePic} alt="" />
                     </span>
                     <span>
-                        <p>{review.userName}</p>
-                        <Rating name="product-rating" value={review.rating} precision={0.5} readOnly />
+                        <p className="reviewUsername">{review.userName}</p>
+                        <Rating name="product-rating" value={review.rating} precision={0.5} readOnly className="reviewRating"/>
                         <p>{review.comment}</p>
                     </span>
                 </div>

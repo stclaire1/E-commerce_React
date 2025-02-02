@@ -1,3 +1,12 @@
 .swiper .swiper-wrapper {
     display: flex;
 }
+
+.swiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: var(--white);
+    border-radius: 15px;
+}

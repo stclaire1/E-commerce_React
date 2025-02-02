@@ -1,5 +1,6 @@
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
+import './TextInput.css';
 
 interface TextInputProps {
     onFocus?: () => void;
@@ -8,8 +9,8 @@ interface TextInputProps {
 
 function TextInput({ onFocus, onChange }: TextInputProps) {
     return (
-        <div>
-            <FeatherIcon icon="search" />
+        <div className="textInputContainer">
+            <FeatherIcon icon="search" className="searchIconCustom"/>
             <input type="text" placeholder="Search headphone" onFocus={onFocus} onChange={onChange} />
         </div>
     );
