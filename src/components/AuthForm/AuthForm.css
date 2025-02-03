@@ -1,0 +1,36 @@
+.authFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 400px;
+    width: 100%;
+
+    > div {
+        display: flex;
+        align-items: center;
+        justify-self: center;
+
+        width: 100%;
+
+        .input {
+            width: 100%;
+            margin: auto;
+            border: 1px solid var(--grey);
+            border-radius: 10px;
+            padding-block: 15px;
+            padding-inline-start: 10px;
+            margin-block-end: 15px;
+            outline: none;
+          }
+    }
+
+    .customLink {
+        color: var(--white);
+        text-decoration: none;
+        margin-block-start: -5px;
+        margin-block-end: 3rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+}

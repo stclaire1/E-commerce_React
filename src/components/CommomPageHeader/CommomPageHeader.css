@@ -1,0 +1,49 @@
+.commomPageHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    width: 100%;
+    padding-inline: 1rem;
+    padding-block-start: 1rem;
+    padding-block-end: 2rem;
+
+    >button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    >p {
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    .cartIcon {
+        cursor: pointer;
+        position: relative;
+        
+        :hover {
+            color: var(--primary-color);
+        }
+
+        .cartBadge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: absolute;
+            left: 15px;
+            top: 10px;
+
+            font-size: 10px;
+            color: var(--white);
+            background-color: var(--primary-color);
+            width: 10px;
+            height: 10px;
+            
+            border-radius: 50%;
+
+        }
+    }
+}

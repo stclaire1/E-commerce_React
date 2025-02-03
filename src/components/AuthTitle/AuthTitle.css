@@ -1,0 +1,17 @@
+.authTitleContainer {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+    color: var(--white);
+    margin-block: 6rem 10rem;
+    letter-spacing: 2px;
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-weight: 500;
+    }
+}
