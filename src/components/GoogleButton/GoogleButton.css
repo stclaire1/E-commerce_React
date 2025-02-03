@@ -1,0 +1,14 @@
+.googleButtonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    letter-spacing: 1px;
+    font-weight: 500;
+    cursor: pointer;
+
+    img {
+        margin-inline-end: 10px;
+    }
+}

@@ -1,0 +1,125 @@
+.simpleCardContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background-color: var(--white);
+    border-radius: 15px;
+    line-height: normal;
+
+    .simpleCardPrice {
+        font-weight: 700;
+    }
+
+    .simpleCardInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+
+        width: 100%;
+    }
+}
+
+.simpleCardContainerFull {
+    min-height: 260px;
+    justify-content: center;
+
+    @media (min-width: 1070px) {
+        margin: auto;
+    }
+}
+
+.simpleCardContainerVertical {
+    flex-direction: column;
+
+    width: 160px;
+    padding-inline: 1rem;
+    cursor: pointer;
+
+    >div>img {
+        width: 120px;
+    }
+
+    .simpleCardName {
+        margin-block-end: 5px;
+    }
+
+    .simpleCardPrice {
+        margin-block-end: 10px;
+    }
+
+    .simpleCardFooter {
+        font-size: .8rem;
+        /* margin-block-end: 1rem; */
+    }
+}
+
+.simpleCardContainerHorizontal {
+    flex-direction: row;
+    align-items: center;
+
+    max-width: 420px;
+    width: 100%;
+    margin-block-end: 20px;
+    cursor: pointer;
+
+    >div:nth-of-type(1) {
+        background-color: var(--light-grey);
+        padding: 5px;
+        border-radius: 15px;
+    }
+
+    >div>img {
+        width: 70px;
+    }
+
+    .simpleCardInfo {
+        display: flex;
+
+        max-width: 400px;
+        width: 100%;
+        min-height: 70px;
+        height: 100%;
+
+        >div:nth-of-type(1) {
+
+            .simpleCardName {
+                margin-block-end: 5px;
+            }
+        }
+    }
+}
+
+.simpleCardFooter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    font-size: .9rem;
+
+    .ratingReviewContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: star;
+
+        >div {
+            margin-inline-end: 1.4rem;
+        }
+
+        .simpleCardRatingContainer {
+            display: flex;
+            align-items: center;
+
+            >img {
+                margin-inline-end: 5px;
+            }
+        }
+    }
+
+    .simpleCardOptions {
+        color: var(--grey);
+    }
+}

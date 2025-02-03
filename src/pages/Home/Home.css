@@ -1,0 +1,49 @@
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    padding-inline: 1rem;
+    padding-block-start: 1rem;
+    padding-block-end: 2rem;
+
+    h2 {
+        margin-block-end: 15px;
+    }
+}
+
+.homeProductsContainer {
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    padding-inline: 1rem;
+    background-color: var(--light-grey);
+    padding-block-start: 2rem;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
+    .filterContainer {
+        margin-block-end: 2rem;
+    }
+}
+
+.homePageCarouselContainer {
+    margin-block-end: 2rem;
+}
+
+.featuredProductsContainer {
+    margin-block-end: 2rem;
+    cursor: pointer;
+    
+    >div:nth-of-type(1) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-block-end: 15px;
+
+        .seeAllLink {
+            color: var(--dark-grey);
+        }
+    }
+}

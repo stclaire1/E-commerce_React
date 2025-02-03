@@ -1,0 +1,48 @@
+@layer reset, base;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@layer reset {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DM Sans", serif;
+  }
+
+  html,
+  body {
+        height: 100%;
+        overflow-x: hidden;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+  ::placeholder {
+    color: var(--grey);
+  }
+}
+
+@layer base {
+  :root {
+    --primary-color: #0ACF83;
+    --defautl: #000000;
+    --white: #FFFFFF;
+    --grey: #BABABA;
+    --light-grey: #F6F6F6;
+    --dark-grey: #7F7F7F;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+      list-style-type: none;
+  }
+}

@@ -1,0 +1,48 @@
+.carrouselCardSalesCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: normal;
+
+    width: 320px;
+    padding-block: 1.3rem;
+    padding-inline: 15px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+    }
+
+    img {
+        width: 120px;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-block-end: 30px;
+    }
+
+    .shopNowButton {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        cursor: pointer;
+
+        .shopNowIcon {
+            color: var(--primary-color);
+        }
+
+        a {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-inline-end: 12px;
+        }
+    }
+
+    
+}

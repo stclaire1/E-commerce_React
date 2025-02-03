@@ -1,0 +1,25 @@
+.textInputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+    padding-block: 8px;
+    padding-inline-start: 10px;
+
+    >input[type=text] {
+        border: none;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .searchIconCustom {
+        color: var(--grey);
+        width: 20px;
+        margin-inline-end: 10px;
+    }
+}

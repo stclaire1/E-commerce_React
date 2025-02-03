@@ -1,0 +1,66 @@
+.homeHeaderContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding-inline: 1rem;
+    padding-block-start: 1rem;
+    padding-block-end: 2rem;
+
+    .menuToggle {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .homeProfilePic {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .navLinks {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        background-color: var(--white);
+        top: 50px;
+        left: 8px;
+        z-index: 1;
+        padding-inline-end: 20px;
+        
+        &.menuActive {
+            display: flex;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            
+            li {
+                padding: 15px;
+                border-bottom: 1px solid var(--grey);
+
+                .menuItem {
+                    color: var(--defautl);
+                }
+
+                .signOutButton {
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                :hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+
+}

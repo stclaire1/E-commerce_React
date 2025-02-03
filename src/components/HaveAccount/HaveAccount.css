@@ -1,0 +1,12 @@
+.haveAccount {
+    color: var(--white);
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 3rem;
+    
+    .accountLink {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}
