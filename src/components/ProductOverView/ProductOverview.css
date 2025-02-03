@@ -11,6 +11,10 @@
     img {
         width: 100%;
     }
+
+    @media (min-width: 680px) {
+        width: 560px;
+    }
 }
 
 .productOverviewContainer {
@@ -23,6 +27,11 @@
     .overviewReviews {
         margin-block-end: 2rem;
         font-weight: 500;
+    }
+
+    @media (min-width: 680px) {
+        width: 560px;
+        margin: auto;
     }
 }
 

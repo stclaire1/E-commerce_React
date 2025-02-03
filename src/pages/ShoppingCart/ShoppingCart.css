@@ -6,6 +6,11 @@
     width: 100%;
     min-height: 70vh;
     padding-inline: 1rem;
+
+    @media (min-width: 430px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
 
 .shoppingCartFooter {

@@ -172,7 +172,7 @@ function Products() {
                 </section>
                 <section className="productsContainer">
                     {filteredProducts.map((product) => (
-                        <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={true} reviews={product.reviews} isVertical={true} />
+                        <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={true} reviews={product.reviews} isVertical={true} isFullCard={true} />
                     ))}
                 </section>
             </main>

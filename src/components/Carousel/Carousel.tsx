@@ -5,6 +5,7 @@ import './Carousel.css'
 
 interface CarouselProps {
     children: React.ReactNode;
+    // slidesPerView?: number;
 }
 
 function Carousel({ children }: CarouselProps) {
@@ -13,12 +14,14 @@ function Carousel({ children }: CarouselProps) {
             modules={[Navigation, Pagination]}
             navigation
             pagination={{ clickable: true }}
-            loop={true}
-            slidesPerView={1}
+            slidesPerView="auto"
+            setWrapperSize={true}
             spaceBetween={20}
         > 
             {React.Children.map(children, child => (
-                <SwiperSlide>{child}</SwiperSlide>
+                <>
+                    {child}
+                </>
             ))}
         </Swiper>
     );

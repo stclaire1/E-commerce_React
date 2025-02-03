@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Carousel from '../Carousel/Carousel';
 import SimpleCard from '../SimpleCard/SimpleCard';
 import './ProductOverview.css';
+import { SwiperSlide } from 'swiper/react';
 
 interface Review {
     userId: string;
@@ -44,8 +45,10 @@ function ProductOverview({ img, reviews, name, products }: ProductReviewProps) {
                     <Link to="/products">See all</Link>
                 </div>
                 <Carousel>
-                    {products.slice(0, 5).map((product) => (
-                        <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
+                    {products.slice(0, 9).map((product) => (
+                        <SwiperSlide>
+                            <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
+                        </SwiperSlide>
                     ))}
                 </Carousel>
             </div>

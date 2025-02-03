@@ -29,6 +29,11 @@
             color: var(--primary-color);
         }
     }
+
+    @media (min-width: 680px) {
+        width: 560px;
+        margin: auto;
+    }
 }
 
 .tabs {

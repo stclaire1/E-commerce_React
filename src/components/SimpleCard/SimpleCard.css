@@ -1,13 +1,11 @@
 .simpleCardContainer {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 15px;
 
     background-color: var(--white);
     border-radius: 15px;
     line-height: normal;
-    min-height: 240px;
 
     .simpleCardPrice {
         font-weight: 700;
@@ -23,12 +21,20 @@
     }
 }
 
+.simpleCardContainerFull {
+    min-height: 260px;
+    justify-content: center;
+
+    @media (min-width: 1070px) {
+        margin: auto;
+    }
+}
+
 .simpleCardContainerVertical {
     flex-direction: column;
 
     width: 160px;
     padding-inline: 1rem;
-    padding-block: 1rem;
     cursor: pointer;
 
     >div>img {
@@ -53,6 +59,7 @@
     flex-direction: row;
     align-items: center;
 
+    max-width: 420px;
     width: 100%;
     margin-block-end: 20px;
     cursor: pointer;
@@ -82,7 +89,6 @@
             }
         }
     }
-
 }
 
 .simpleCardFooter {

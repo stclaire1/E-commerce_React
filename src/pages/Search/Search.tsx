@@ -63,9 +63,11 @@ function Search() {
                 </section>
                 <section className="popularProductsContainer">
                     <p>Popular Product</p>
-                    {getPopularProducts().map((product) => (
-                        <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={true} reviews={product.reviews} isVertical={false} />
-                    ))}
+                    <div className="propularProductsCards">
+                        {getPopularProducts().map((product) => (
+                            <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={true} reviews={product.reviews} isVertical={false} />
+                        ))}
+                    </div>
                 </section>
             </main>
         </>

@@ -9,6 +9,8 @@ import SalesCard from '../../components/SalesCard/SalesCard';
 import { Link, useNavigate } from 'react-router-dom';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
 import './Home.css';
+import { SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/types';
 
 function Home() {
 
@@ -65,7 +67,7 @@ function Home() {
       </header>
       <main>
         <section className="homeContainer">
-          <p>Hi, {user?.displayName ? `${user.displayName}!` : 'welcome!'}</p>
+          <p>Hi, { user?.displayName ? `${user.displayName}!` : 'welcome!'}</p>
           <h2>What are you looking for today?</h2>
           <TextInput onFocus={handleInputFocus} />
         </section>
@@ -85,12 +87,14 @@ function Home() {
           <section className="homePageCarouselContainer">
             <Carousel>
               {filteredProducts.map((product) => (
-                <SalesCard
-                  key={product.id}
-                  id={product.id}
-                  name={product.name}
-                  img={product.img}
-                />
+                <SwiperSlide>
+                  <SalesCard
+                    key={product.id}
+                    id={product.id}
+                    name={product.name}
+                    img={product.img}
+                  />
+                </SwiperSlide>
               ))}
             </Carousel>
           </section>
@@ -101,8 +105,10 @@ function Home() {
             </div>
             <div className="carouselContainer">
               <Carousel>
-                {products.slice(0, 10).map((product) => (
-                  <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
+                {products.map((product) => (
+                  <SwiperSlide>
+                    <SimpleCard key={product.id} id={product.id} img={product.img} name={product.name} price={product.price} showDetails={false} isVertical={true} />
+                  </SwiperSlide>
                 ))}
               </Carousel>
             </div>

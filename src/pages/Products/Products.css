@@ -43,6 +43,12 @@
     padding-inline: 1rem;
     padding-block: 2rem;
     border-radius: 15px 15px 0 0;
+
+    @media (min-width: 1070px) {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4rem;
+    }
 }
 
 .filterSheet {

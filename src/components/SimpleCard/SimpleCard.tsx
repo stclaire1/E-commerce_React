@@ -20,9 +20,10 @@ interface SimpleCardProps {
     showDetails: boolean;
     reviews?: Review[];
     isVertical: boolean;
+    isFullCard?: boolean;
 }
 
-function SimpleCard({ id, img, name, price, showDetails, reviews, isVertical }: SimpleCardProps) {
+function SimpleCard({ id, img, name, price, showDetails, reviews, isVertical, isFullCard }: SimpleCardProps) {
     const calculateAverageRating = (reviews: Review[]) => {
         const total = reviews.reduce((sum, review) => sum + review.rating, 0);
         return total / reviews.length;
@@ -37,9 +38,10 @@ function SimpleCard({ id, img, name, price, showDetails, reviews, isVertical }: 
     }
 
     const cardCustomStyle = isVertical ? "simpleCardContainerVertical" : "simpleCardContainerHorizontal";
+    const cardCustomStyleFull = isFullCard ? "simpleCardContainerFull" : "";
 
     return (
-        <div className={`simpleCardContainer ${cardCustomStyle}`} onClick={handleCardClick}>
+        <div className={`simpleCardContainer ${cardCustomStyle} ${cardCustomStyleFull}`} onClick={handleCardClick}>
             <div>
                 <img src={img} alt="" />
             </div>
